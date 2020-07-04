@@ -9,7 +9,7 @@ RUN dep ensure -vendor-only
 COPY . ./
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
 
-# Final stage:
+# Final stage: copy of source code from remote directory
 FROM alpine
 WORKDIR /root
 COPY --from=0 /go/src/github.com/alexandrevilain/fake-backend/app .
