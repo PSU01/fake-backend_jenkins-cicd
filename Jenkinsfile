@@ -84,14 +84,14 @@ pipeline {
                        sh 'ansible-playbook  -i hosts --vault-password-file vault.key --private-key id_rsa --tags "preprod" --limit preprod install_fake-backend.yml'
                    }
                }
-               stage("check app in qualification env") {
+              /* stage("check app in qualification env") {
                     when {
                        expression { GIT_BRANCH == 'origin/dev' }
                     }
                    steps {
                        sh 'ansible-playbook  -i hosts --vault-password-file vault.key --tags "preprod" check_deploy.yml'
                    }
-               }
+               }*/
             }
         }
         stage('Test and deploy the application in production') {
